@@ -1,9 +1,11 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-undef */
+/* eslint-disable linebreak-style */
 const Hapi = require('@hapi/hapi');
 const routes = require('./routes');
 const init = async () => {
   const server = Hapi.server({
-    host: 'localhost',
+    host: process.env.NODE_ENV !== 'production' ? 'localhost' : '0.0.0.0',
     port: 3000,
     routes: {
       cors: {
